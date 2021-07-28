@@ -5,5 +5,17 @@
         <h1>
             testing
         </h1>
+
+        <!--form : 서버에 보내는 요청 명세서와 같은 역할 -->
+        <form action = "/account/hello_world/" method="post">
+                {%  csrf_token %} <!-- 장고에서 제공하는 보안 기능 -->
+            <input type="submit" class="btn btn-primary" value="POST">
+
+        </form>
+
+        <!-- views.py 에서 context에서 가져온 text-->
+        <h1>
+            {{ text }}
+        </h1>
     </div>
 {% endblock %}
