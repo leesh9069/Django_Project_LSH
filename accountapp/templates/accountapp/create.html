@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{%  block content %}
+    <div style="text-align: center">
+        <form action="{%  url 'accountapp:create' %}" method="post"> {# 타고가는 URL 주소 #}
+            {% csrf_token %} {# 장고 기본 제공 보안 시스템 #}
+            {{ form }}  {# accountapp view단에서 form class로 지정해준 것을 그대로 가져온다 #}
+            <input type="submit" class="btn btn-primary">
+        </form>
+    </div>
+{% endblock %}
