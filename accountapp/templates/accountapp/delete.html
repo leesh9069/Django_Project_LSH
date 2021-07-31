@@ -5,7 +5,7 @@
         <div class="mb-4">
             <h4>Quit</h4>
         </div>
-        <form action="{%  url 'accountapp:delete' pk=user.pk %}" method="post"> {# 타고가는 URL 주소 #}
+        <form action="{%  url 'accountapp:delete' pk=target_user %}" method="post"> {# 타고가는 URL 주소 #}
             {% csrf_token %} {# 장고 기본 제공 보안 시스템 #}
             <input type="submit" class="btn btn-danger rounded-pill col-3 mt-3">
         </form>
