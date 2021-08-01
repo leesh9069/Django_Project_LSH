@@ -1,9 +1,11 @@
 <div class="pragmatic_header">
     <div>
-        <h1 class="pragmatic_logo">Pragmatic</h1>
+        <h1 class="pragmatic_logo">Lee.S.H</h1>
     </div>
     <div>
-        <span>nav1</span>
+        <a href="{% url 'articleapp:list' %}">
+            <span>Articles</span>
+        </a>
         <span>nav2</span>
         <span>nav3</span>
         {% if not user.is_authenticated %}
