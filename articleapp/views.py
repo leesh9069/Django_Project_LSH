@@ -16,7 +16,6 @@ from articleapp.models import Article
 class ArticleCreateView(CreateView):
     model = Article
     form_class = ArticleCreationForm
-    success_url = reverse_lazy('accountapp:hello_world')
     template_name = 'articleapp/create.html'
 
     def form_valid(self, form):
