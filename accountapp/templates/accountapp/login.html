@@ -3,17 +3,20 @@
 
 {% block content %}
 
-    <div style="text-align: center; max-width: 500px; margin: 4rem auto">
-        <div>
-            <h4>Login</h4>
-        </div>
-        <div>
-            <form action="" method="post">
-                {% csrf_token %}
-                {% bootstrap_form form %}
-                <input type="submit" class="btn btn-dark rounded-pill col-3 mt-3"> {# col : col12가 부모의 너비의 100프로, mt-3 : margin top이 기존의 3배 #}
-            </form>
-        </div>
+<div class="text-center mw-500 m-auto">
+    <div class="m-5">
+        <h4>Login</h4>
     </div>
+    <div>
+        <form action="{% url 'accountapp:login' %}" method="post">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            <div class="m-5">
+                <input type="submit"
+                       class="btn btn-dark rounded-pill px-5">
+            </div>
+        </form>
+    </div>
+</div>
 
 {% endblock %}

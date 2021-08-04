@@ -2,48 +2,44 @@
 
 {% block content %}
 
-    <div>
-        <div style = "text-align: center; max-width: 500px; margin: 4rem auto;">
-
-            {% if target_user.profile %}
-            <h2 style="font-family: 'NanumSquareB'">
-                <img src = "{{ target_user.profile.image.url }}" class = "profile_image m-4" alt="profile image">
+<div class="text-center mw-500 m-auto">
+    <div class="m-5">
+        {% if target_user.profile %}
+            <img src="{{ target_user.profile.image.url }}"
+                 class="profile_image m-4"
+                 alt="profile image">
+            <h2 class="NNS_B">
                 {{ target_user.profile.nickname }}
-                {% if target_user == user %}
-                <a href="{% url 'profileapp:update' pk=target_user.profile.pk %}">
-                    edit
-                </a>
-                {% endif %}
+                    {% if user == target_user %}
+                        <a href="{% url 'profileapp:update' pk=target_user.profile.pk %}"
+                           class="material-icons round_button">
+                            edit
+                        </a>
+                    {% endif %}
             </h2>
-            {% else %}
-                {% if target_user == user %}
-                <a href="{% url 'profileapp:create' %}">
-                    <h2 style="font-family: 'NanumSquareB'">
-                        Create profile
-                    </h2>
-                </a>
-                {% else %}
-                <h2>
-                    닉네임 미설정
-                </h2>
-                {% endif %}
-            {% endif %}
-
-
-
-            {% if target_user == user %}
-            <a href="{% url 'accountapp:update' pk=user.pk %}">
-                <p>
-                    Change Info
-                </p>
+            <h5>{{ target_user.profile.message }}</h5>
+        {% else %}
+        <h2 class="NNS_B">
+            <a href="{% url 'profileapp:create' %}">
+                Create Profile
             </a>
-            <a href="{% url 'accountapp:delete' pk=user.pk %}">
-                <p>
-                    Quit
-                </p>
-            </a>
-            {% endif %}
-        </div>
+        </h2>
+        {% endif %}
     </div>
+
+    {% if user == target_user %}
+    <div>
+        <a href="{% url 'accountapp:update' pk=target_user.pk %}"
+           class="material-icons round_button mx-1">
+            settings
+        </a>
+        <a href="{% url 'accountapp:delete' pk=target_user.pk %}"
+           class="material-icons round_button mx-1">
+            close
+        </a>
+    </div>
+    {% endif %}
+</div>
+
 
 {% endblock %}
