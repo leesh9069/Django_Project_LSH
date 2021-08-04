@@ -7,6 +7,7 @@
 
             {% if target_user.profile %}
             <h2 style="font-family: 'NanumSquareB'">
+                <img src = "{{ target_user.profile.image.url }}" class = "profile_image m-4" alt="profile image">
                 {{ target_user.profile.nickname }}
                 {% if target_user == user %}
                 <a href="{% url 'profileapp:update' pk=target_user.profile.pk %}">

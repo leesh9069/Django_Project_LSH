@@ -56,6 +56,7 @@ class AccountUpdateView(UpdateView):
     template_name = 'accountapp/update.html'
 
 
+
 @method_decorator(has_ownership, 'get')
 @method_decorator(has_ownership, 'post')
 class AccountDeleteView(DeleteView):
