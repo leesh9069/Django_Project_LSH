@@ -13,6 +13,7 @@ import os
 from pathlib import Path
 
 import environ
+from django.contrib import messages
 from django.urls import reverse_lazy
 
 env = environ.Env(
@@ -59,6 +60,11 @@ INSTALLED_APPS = [
     'subscribeapp',
     'likeapp',
 ]
+from django.contrib.messages import constants as messages
+
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger',
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

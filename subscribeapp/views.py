@@ -30,7 +30,7 @@ class SubscriptionView(RedirectView):
     def get_redirect_url(self, *args, **kwargs):
         return reverse('projectapp:detail', kwargs={'pk': kwargs['project_pk']})
 
-@method_decorator(login_required())
+@method_decorator(login_required,'get')
 class SubscriptionListView(ListView):
     model = Article
     context_object_name = 'article_list'
