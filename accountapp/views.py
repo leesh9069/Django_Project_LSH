@@ -17,26 +17,6 @@ from articleapp.models import Article
 
 has_ownership = [account_ownership_required, login_required]
 
-@login_required
-def hello_world(request):
-
-    if request.user.is_authenticated:
-
-        if request.method == 'POST':
-
-            temp = request.POST.get('hello_world_input')  # hello_world_input의 데이터를 get으로 받아옴(통신)
-
-            new_hello_world = HelloWorld()
-            new_hello_world.text = temp
-            new_hello_world.save()
-
-            hello_world_list = HelloWorld.objects.all()
-            return HttpResponseRedirect(reverse('accountapp:hello_world'))
-        else:
-            hello_world_list = HelloWorld.objects.all()
-            return render(request, 'accountapp/hello_world.html', context={'hello_world_list': hello_world_list})
-
-
 class AccountCreateView(CreateView):
     model = User
     form_class = UserCreationForm
@@ -70,5 +50,5 @@ class AccountUpdateView(UpdateView):
 class AccountDeleteView(DeleteView):
     model = User
     context_object_name = 'target_user'
-    success_url = reverse_lazy('accountapp:login')
+    success_url = reverse_lazy('articleapp:list')
     template_name = 'accountapp/delete.html'

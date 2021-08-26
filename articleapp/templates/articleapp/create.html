@@ -1,15 +1,31 @@
 {% extends 'base.html' %}
 {% load bootstrap4 %}
+{% load static %}
 
-{%  block content %}
-<div style="text-align: center; max-width: 500px; margin: 4rem auto">
-    <div class="mb-4">
-        <h4>Article Create</h4>
+{% block content %}
+
+<script src="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/js/medium-editor.min.js"></script>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/css/medium-editor.min.css" type="text/css" media="screen" charset="utf-8">
+<link rel="stylesheet" href="{% static 'beagle.css' %}">
+
+<div class="text-center mw-500 m-auto">
+    <div class="m-5">
+        <h4>Create Article</h4>
     </div>
-    <form action="{%  url 'articleapp:create' %}" method="post" enctype="multipart/form-data"> {# 타고가는 URL 주소 #}
-        {% csrf_token %} {# 장고 기본 제공 보안 시스템 #}
-        {% bootstrap_form form %}  {# 원래는 {{ form }}이었던 것...accountapp view단에서 form class로 지정해준 것을 그대로 가져온다 #}
-        <input type="submit" class="btn btn-dark rounded-pill col-3 mt-3">
-    </form>
+    <div>
+        <form action="{% url 'articleapp:create' %}"
+              method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            <div class="m-5">
+                <input type="submit"
+                       class="btn btn-dark rounded-pill px-5">
+            </div>
+        </form>
+    </div>
 </div>
+
+<script>var editor = new MediumEditor('.editable');</script>
+
+
 {% endblock %}
